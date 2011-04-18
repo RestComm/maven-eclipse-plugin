@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.mobicents</groupId>
 		<artifactId>mobicents-parent</artifactId>
-		<version>2.14</version>
+		<version>2.18-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>maven-eclipse-plugin</artifactId>
@@ -15,8 +15,6 @@
 		Maven Plugin to generate Eclipse project files, based on code
 		from Andromda App Plugin
 	</description>
-
-	<packaging>maven-plugin</packaging>
 
 	<name>
 		Mobicents Eclipse Project's files generator Maven Plugin
@@ -97,7 +95,7 @@
 		</resources>
 		
 		<plugins>
-			<plugin>
+			<!-- plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -136,7 +134,7 @@
 				<configuration>
 					<goalPrefix>mobicents</goalPrefix>
 				</configuration>
-			</plugin>
+			</plugin-->
 		</plugins>
 	</build>
 	<profiles>
@@ -168,7 +166,7 @@
 					maven-project-info-reports-plugin
 				</artifactId>
 			</plugin>
-			<plugin>
+			<!-- plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
@@ -178,7 +176,7 @@
 						${basedir}/src/java;${basedir}/target/src
 					</sourcepath>
 				</configuration>
-			</plugin>
+			</plugin-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-changelog-plugin</artifactId>
