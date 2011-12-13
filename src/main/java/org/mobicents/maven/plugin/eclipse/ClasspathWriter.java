@@ -26,13 +26,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
-import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.apache.commons.lang.StringUtils;
@@ -50,8 +48,6 @@ import org.codehaus.plexus.util.IOUtil;
 import org.codehaus.plexus.util.xml.PrettyPrintXMLWriter;
 import org.codehaus.plexus.util.xml.XMLWriter;
 import org.mobicents.maven.plugin.utils.PathNormalizer;
-
-import sun.security.action.GetLongAction;
 
 /**
  * Writes the Eclipse .classpath files.
@@ -331,11 +327,13 @@ public class ClasspathWriter extends EclipseWriter {
 			resources.addAll(project.getResources());
 			resources.addAll(project.getTestResources());
 			for (Resource resource : resources) {
-				File resourceDirectory = new File(resource.getDirectory());
+	            final String resourceRoot = PathNormalizer
+                    .normalizePath(resource.getDirectory());
+				File resourceDirectory = new File(resourceRoot);
 				if (resourceDirectory.exists()
 						&& resourceDirectory.isDirectory()) {
 					String resourceSourceRootPath = StringUtils.replace(
-							resource.getDirectory(), rootDirectory, "");
+					    resourceRoot, rootDirectory, "");
 					if (resourceSourceRootPath.startsWith("/")) {
 						resourceSourceRootPath = resourceSourceRootPath
 								.substring(1, resourceSourceRootPath.length());
